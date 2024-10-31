@@ -12,6 +12,7 @@ class Query(g.ObjectType):
     missions_by_country = g.List(MissionType,country_name=g.String(required=True))
     get_5_countries = g.List(CountryType)
     missions_by_target_industry = g.List(MissionType,target_industry=g.String(required=True))
+    missions_by_targettype = g.List(MissionType,targettype=g.String(required=True))
 
     @staticmethod
     def resolve_mission_by_id(root, info, id):
@@ -49,6 +50,12 @@ class Query(g.ObjectType):
         with session_maker() as session:
             missions = session.query(Mission).join(Target).filter(Target.target_industry == target_industry).all()
             return missions
+    @staticmethod
+    def resolve_missions_by_targettype(root, info, targettype):
+        with session_maker() as session:
+            missions = session.query(Mission).join(Target).join(Targettype).filter(Targettype.target_type_name.ilike(f"%{targettype}%")).all()
+            return missions
+
 
 
 

@@ -107,4 +107,5 @@ class Mutation(graphene.ObjectType):
     add_mission = AddMission.Field()
     add_target = AddTarget.Field()
     update_target = UpdateTarget.Field()
+    delete_mission = DeleteMission.Field()
 
