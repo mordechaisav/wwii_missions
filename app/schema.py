@@ -60,14 +60,3 @@ schema = g.Schema(query=Query,mutation=Mutation)
 
 
 
-# cities = session.query(City).filter(City.country_id == country.country_id).all()
-            # missions_id = []
-            # for city in cities:
-            #     targets = session.query(Target).filter(Target.city_id == city.city_id).all()
-            #     for target in targets:
-            #         missions_id.append(target.mission_id)
-            # missions = []
-            # for mission_id in missions_id:
-            #     mission = session.query(Mission).get(mission_id)
-            #     missions.append(mission)
-            # return missions
